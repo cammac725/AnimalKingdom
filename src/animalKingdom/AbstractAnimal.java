@@ -16,7 +16,7 @@ public abstract class AbstractAnimal
   }
 
   public abstract String move();
-  public abstract String breath();
+  public abstract String breathe();
   public abstract String reproduce();
 
   public int getId()
@@ -52,7 +52,7 @@ public abstract class AbstractAnimal
   @Override
   public String toString()
   {
-    return name + "Year named: " + year;
+    return name + ": Year named: " + year;
   }
 
 }

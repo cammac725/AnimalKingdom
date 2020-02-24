@@ -43,8 +43,52 @@ public class Main
     animals.add(catfish);
     animals.add(perch);
 
+
+    System.out.println("*** descending by year named ***");
+    animals.sort((a1, a2) -> a1.getYear() - a2.getYear());
+    animals.forEach(a -> System.out.println(a));
+
+    System.out.println("*** animals alphabetically ***");
+    animals.sort((a1, a2) -> a1.getName().compareToIgnoreCase(a2.getName()));
+    animals.forEach(a -> System.out.println(a.getName()));
+
+    System.out.println("*** ordered by how they move ***");
+    animals.sort((a1, a2) -> a1.move().compareToIgnoreCase(a2.move()));
+    animals.forEach(a -> System.out.println(a.getName() + ": " + a.move()));
+    
+    System.out.println("*** only animals that breathe with lungs ***");
     animals.forEach(a -> {
-      System.out.println(a.getName());
+      if (a.breathe().equals("lungs")) {
+        System.out.println(a.getName() + ": " + a.breathe());
+      }
+    });
+    
+    System.out.println("*** breathe with lungs and named in 1758 ***");
+    animals.forEach(a -> {
+      if ((a.breathe().equals("lungs")) && (a.getYear() == 1758)) {
+        System.out.println(a.getName() + ": " + a.breathe() + ", named: " + a.getYear());
+      }
+    });
+    
+    System.out.println("*** lay eggs and breathe with lungs ***");
+    animals.forEach(a -> {
+      if((a.reproduce().equals("eggs")) && (a.breathe().equals("lungs"))) {
+        System.out.println(
+          a.getName() + ": lays " + a.reproduce() + " and breathes with " + a.breathe()
+        );
+      }
+    });
+    
+    System.out.println("*** aphabetically those named in 1758 ***");
+    animals.sort((a1, a2) -> a1.getName().compareToIgnoreCase(a2.getName()));
+    animals.forEach(a -> {
+      if (a.getYear() == 1758) System.out.println(a.getName() + ": " + a.getYear());
+    });
+
+    System.out.println("*** mammals alphabetically  ***");
+    animals.sort((a1, a2) -> a1.getName().compareToIgnoreCase(a2.getName()));
+    animals.forEach(a -> {
+      if (a instanceof Mammal) System.out.println(a.getName());
     });
 
   }
